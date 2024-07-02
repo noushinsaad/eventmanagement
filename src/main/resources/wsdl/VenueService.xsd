@@ -1,0 +1,19 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://example.com/venues"
+        xmlns:tns="http://example.com/venues"
+        elementFormDefault="qualified">
+
+    <element name="Venue" type="tns:Venue"/>
+
+    <complexType name="Venue">
+        <sequence>
+            <element name="id" type="xsd:long"/>
+            <element name="name" type="xsd:string"/>
+            <element name="location" type="xsd:string"/>
+            <element name="capacity" type="xsd:int"/>
+        </sequence>
+    </complexType>
+
+    <!-- Similar definitions for other request and response types -->
+
+</schema>

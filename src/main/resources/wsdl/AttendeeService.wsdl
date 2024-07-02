@@ -1,0 +1,66 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://example.com/attendees"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://example.com/attendees"
+             name="AttendeeService">
+
+    <types>
+        <xsd:schema targetNamespace="http://example.com/attendees">
+            <xsd:import namespace="http://example.com/attendees" schemaLocation="AttendeeService.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="registerAttendeeRequest">
+        <part name="attendee" element="tns:Attendee"/>
+    </message>
+    <message name="registerAttendeeResponse">
+        <part name="attendee" element="tns:Attendee"/>
+    </message>
+    <message name="getAttendeeDetailsRequest">
+        <part name="attendeeId" element="tns:Attendee"/>
+    </message>
+    <message name="getAttendeeDetailsResponse">
+        <part name="attendee" element="tns:Attendee"/>
+    </message>
+
+
+    <portType name="AttendeePortType">
+        <operation name="registerAttendee">
+            <input message="tns:registerAttendeeRequest"/>
+            <output message="tns:registerAttendeeResponse"/>
+        </operation>
+        <operation name="getAttendeeDetails">
+            <input message="tns:getAttendeeDetailsRequest"/>
+            <output message="tns:getAttendeeDetailsResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="AttendeeBinding" type="tns:AttendeePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="registerAttendee">
+            <soap:operation soapAction="registerAttendee"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getAttendeeDetails">
+            <soap:operation soapAction="getAttendeeDetails"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="AttendeeService">
+        <port name="AttendeePort" binding="tns:AttendeeBinding">
+            <soap:address location="http://localhost:8081/ws"/>
+        </port>
+    </service>
+</definitions>

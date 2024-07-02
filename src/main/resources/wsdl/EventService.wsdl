@@ -1,0 +1,106 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://example.com/events"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://example.com/events"
+             name="EventService">
+
+    <types>
+        <xsd:schema targetNamespace="http://example.com/events">
+            <xsd:import namespace="http://example.com/events" schemaLocation="EventService.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="createEventRequest">
+        <part name="event" element="tns:Event"/>
+    </message>
+    <message name="createEventResponse">
+        <part name="event" element="tns:Event"/>
+    </message>
+    <message name="updateEventRequest">
+        <part name="event" element="tns:Event"/>
+    </message>
+    <message name="updateEventResponse">
+        <part name="event" element="tns:Event"/>
+    </message>
+
+    <message name="deleteEventRequest">
+        <part name="eventId" element="tns:Event"/>
+    </message>
+    <message name="deleteEventResponse">
+        <part name="success" type="boolean"/>
+    </message>
+
+    <message name="getEventDetailsRequest">
+        <part name="eventId" element="tns:Event"/>
+    </message>
+    <message name="getEventDetailsResponse">
+        <part name="event" element="tns:Event"/>
+    </message>
+
+
+    <portType name="EventPortType">
+        <operation name="createEvent">
+            <input message="tns:createEventRequest"/>
+            <output message="tns:createEventResponse"/>
+        </operation>
+        <operation name="updateEvent">
+            <input message="tns:updateEventRequest"/>
+            <output message="tns:updateEventResponse"/>
+        </operation>
+        <operation name="deleteEvent">
+            <input message="tns:deleteEventRequest"/>
+            <output message="tns:deleteEventResponse"/>
+        </operation>
+        <operation name="getEventDetails">
+            <input message="tns:getEventDetailsRequest"/>
+            <output message="tns:getEventDetailsResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="EventBinding" type="tns:EventPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="createEvent">
+            <soap:operation soapAction="createEvent"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="updateEvent">
+            <soap:operation soapAction="updateEvent"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="deleteEvent">
+            <soap:operation soapAction="deleteEvent"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getEventDetails">
+            <soap:operation soapAction="getEventDetails"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="EventService">
+        <port name="EventPort" binding="tns:EventBinding">
+            <soap:address location="http://localhost:8080/ws"/>
+        </port>
+    </service>
+</definitions>

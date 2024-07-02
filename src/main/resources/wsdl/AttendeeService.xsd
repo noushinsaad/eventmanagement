@@ -1,0 +1,53 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://example.com/attendees"
+        xmlns:tns="http://example.com/attendees"
+        elementFormDefault="qualified">
+
+    <element name="Attendee" type="tns:Attendee"/>
+
+    <complexType name="Attendee">
+        <sequence>
+            <element name="id" type="xsd:long"/>
+            <element name="name" type="xsd:string"/>
+            <element name="email" type="xsd:string"/>
+            <element name="phone" type="xsd:string"/>
+        </sequence>
+    </complexType>
+
+    <!-- Definition for RegisterAttendeeRequest -->
+    <element name="RegisterAttendeeRequest" type="tns:RegisterAttendeeRequest"/>
+
+    <complexType name="RegisterAttendeeRequest">
+        <sequence>
+            <element name="attendee" type="tns:Attendee"/>
+        </sequence>
+    </complexType>
+
+    <!-- Definition for RegisterAttendeeResponse -->
+    <element name="RegisterAttendeeResponse" type="tns:RegisterAttendeeResponse"/>
+
+    <complexType name="RegisterAttendeeResponse">
+        <sequence>
+            <element name="attendee" type="tns:Attendee"/>
+        </sequence>
+    </complexType>
+
+    <!-- Definition for GetAttendeeDetailsRequest -->
+    <element name="GetAttendeeDetailsRequest" type="tns:GetAttendeeDetailsRequest"/>
+
+    <complexType name="GetAttendeeDetailsRequest">
+        <sequence>
+            <element name="attendeeId" type="xsd:long"/>
+        </sequence>
+    </complexType>
+
+    <!-- Definition for GetAttendeeDetailsResponse -->
+    <element name="GetAttendeeDetailsResponse" type="tns:GetAttendeeDetailsResponse"/>
+
+    <complexType name="GetAttendeeDetailsResponse">
+        <sequence>
+            <element name="attendee" type="tns:Attendee"/>
+        </sequence>
+    </complexType>
+
+</schema>

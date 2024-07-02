@@ -1,0 +1,46 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://example.com/utilities"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://example.com/utilities"
+             name="UtilityService">
+
+    <types>
+        <xsd:schema targetNamespace="http://example.com/utilities">
+            <xsd:import namespace="http://example.com/utilities" schemaLocation="UtilityService.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="getUtilitiesRequest">
+        <part name="utilities" element="tns:Utilities"/>
+    </message>
+    <message name="getUtilitiesResponse">
+        <part name="utilities" element="tns:Utilities"/>
+    </message>
+
+    <portType name="UtilityPortType">
+        <operation name="getUtilities">
+            <input message="tns:getUtilitiesRequest"/>
+            <output message="tns:getUtilitiesResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="UtilityBinding" type="tns:UtilityPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="getUtilities">
+            <soap:operation soapAction="getUtilities"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="UtilityService">
+        <port name="UtilityPort" binding="tns:UtilityBinding">
+            <soap:address location="http://localhost:8084/ws"/>
+        </port>
+    </service>
+</definitions>

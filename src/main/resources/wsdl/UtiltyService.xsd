@@ -1,0 +1,13 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://example.com/utilities"
+        xmlns:tns="http://example.com/utilities"
+        elementFormDefault="qualified">
+
+    <element name="Utilities" type="tns:Utilities"/>
+
+    <complexType name="Utilities">
+        <sequence>
+            <element name="utility" type="xsd:string" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

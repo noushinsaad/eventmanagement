@@ -1,0 +1,50 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://example.com/venues"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://example.com/venues"
+             name="VenueService">
+
+    <types>
+        <xsd:schema targetNamespace="http://example.com/venues">
+            <xsd:import namespace="http://example.com/venues" schemaLocation="VenueService.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="checkAvailableVenuesRequest">
+        <part name="venue" element="tns:Venue"/>
+    </message>
+    <message name="checkAvailableVenuesResponse">
+        <part name="venue" element="tns:Venue"/>
+    </message>
+
+    <!-- Similar definitions for bookVenue -->
+
+    <portType name="VenuePortType">
+        <operation name="checkAvailableVenues">
+            <input message="tns:checkAvailableVenuesRequest"/>
+            <output message="tns:checkAvailableVenuesResponse"/>
+        </operation>
+        <!-- Similar operations for bookVenue -->
+    </portType>
+
+    <binding name="VenueBinding" type="tns:VenuePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="checkAvailableVenues">
+            <soap:operation soapAction="checkAvailableVenues"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <!-- Similar bindings for bookVenue -->
+    </binding>
+
+    <service name="VenueService">
+        <port name="VenuePort" binding="tns:VenueBinding">
+            <soap:address location="http://localhost:8082/ws"/>
+        </port>
+    </service>
+</definitions>

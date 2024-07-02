@@ -1,0 +1,19 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://example.com/payments"
+        xmlns:tns="http://example.com/payments"
+        elementFormDefault="qualified">
+
+    <element name="Payment" type="tns:Payment"/>
+
+    <complexType name="Payment">
+        <sequence>
+            <element name="id" type="xsd:long"/>
+            <element name="amount" type="xsd:decimal"/>
+            <element name="method" type="xsd:string"/>
+            <element name="status" type="xsd:string"/>
+        </sequence>
+    </complexType>
+
+    <!-- Similar definitions for other request and response types -->
+
+</schema>

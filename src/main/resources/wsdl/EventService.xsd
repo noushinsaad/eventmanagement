@@ -1,0 +1,82 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://example.com/events"
+        xmlns:tns="http://example.com/events"
+        elementFormDefault="qualified">
+
+    <element name="Event" type="tns:Event"/>
+
+    <complexType name="Event">
+        <sequence>
+            <element name="id" type="long"/>
+            <element name="name" type="string"/>
+            <element name="date" type="date"/>
+            <element name="location" type="string"/>
+        </sequence>
+    </complexType>
+
+    <element name="createEventRequest">
+        <complexType>
+            <sequence>
+                <element name="event" type="tns:Event"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="createEventResponse">
+        <complexType>
+            <sequence>
+                <element name="event" type="tns:Event"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="updateEventRequest">
+        <complexType>
+            <sequence>
+                <element name="event" type="tns:Event"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="updateEventResponse">
+        <complexType>
+            <sequence>
+                <element name="event" type="tns:Event"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="deleteEventRequest">
+        <complexType>
+            <sequence>
+                <element name="eventId" type="long"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="deleteEventResponse">
+        <complexType>
+            <sequence>
+                <element name="success" type="boolean"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="getEventDetailsRequest">
+        <complexType>
+            <sequence>
+                <element name="eventId" type="long"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="getEventDetailsResponse">
+        <complexType>
+            <sequence>
+                <element name="event" type="tns:Event"/>
+            </sequence>
+        </complexType>
+    </element>
+
+
+</schema>
